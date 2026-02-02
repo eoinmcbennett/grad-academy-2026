@@ -407,6 +407,8 @@ const cart: CartItem[] = [
 ];
 ```
 
+</div>
+
 ---
 
 layout: center
@@ -432,8 +434,6 @@ class: text-center
 | **Tooling Support** | Good       | Excellent (autocomplete, refactoring) |
 | **File Extension**  | `.js`      | `.ts` (compiles to `.js`)             |
 | **Browser Support** | Native     | Requires compilation                  |
-
----
 
 ---
 
