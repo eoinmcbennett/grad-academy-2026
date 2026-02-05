@@ -22,12 +22,12 @@ layout: center
 # What We'll Cover in Week 1
 
 - Basic AI Terminology
-- How to integrate AI into your daily workflow safely
-- AI Agents and Agentic AI
-- Code reviews
 - Prompt Engineering
 - Context Engineering
+- AI Agents and Agentic AI
+- How to integrate AI into your daily workflow safely
 - MCP
+- Code reviews
 
 ---
 
@@ -90,13 +90,13 @@ layout: center
 
 ---
 
-# Exercise: Debrief
+# Exercise: Group Debrief
 
 **Time:** 15 minutes
 
 Form groups of 3-5 and compare your findings.
 
-Report back any common themes or findings after.
+Report back any common themes or interesting discoveries after.
 
 ---
 layout: end

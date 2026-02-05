@@ -109,7 +109,7 @@ export class UserService {
 }
 
 const emailService = new EmailService(...);
-const userService = new UserService(emailService));
+const userService = new UserService(emailService);
 ```
 
 </div>

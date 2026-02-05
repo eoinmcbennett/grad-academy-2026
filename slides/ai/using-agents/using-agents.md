@@ -128,7 +128,7 @@ You are a security-focused code reviewer.
 - Suggest improvements, don't implement them
 
 ## Output format:
-Provide findings as a numbered list with severity.
+Provide findings as a numbered list with severity. Put this in a review.md file
 ```
 
 Refer back to prompt engineering techniques for this!

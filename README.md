@@ -29,13 +29,17 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `cryptography-101/` - Basic introduction to cryptography covering hashing, symmetric/asymmetric encryption, signatures, and more
 - `di/` - Dependency Injection concepts and patterns
 - `intro/` - Course introduction: Engineering with AI, week 1 overview, basic AI concepts (`intro.md`)
+- `java-101/` - Java 101: Introduction to Java fundamentals including loops, conditions, enums, and classes (`java-101.md`)
 - `js-vs-ts/` - JavaScript vs TypeScript comparison presentation
 - `logging/` - Logging best practices for NodeJS Express backend and frontend applications, covering log levels, structured logging, security, and environment-specific configuration (`logging-practices.md`)
 - `mcp/` - Model Context Protocol (MCP) introduction: setting up and using Context7 MCP with VS Code Copilot for up-to-date library documentation (`mcp.md`)
 - `password-storage/` - Password storage in databases: from naive approaches (plaintext) to modern secure methods (bcrypt, Argon2) with salt
 - `prompt-engineering/` - Prompt engineering techniques and best practices for guiding LLM output. (`prompt-engineering.md`)
 - `using-agents/` - Creating and using custom GitHub Copilot agents (`.agent.md` files) for specialized AI assistants (`using-agents.md`)
+- `using-git/` - Using Git: A practical guide to version control with Git, including branching, remote repositories, SSH configuration, and best practices (`using-git.md`)
 - `web-authentication/` - Authentication methods for web applications: cookies, sessions, JWT, and best practices for securing user access
+- `week01/` - Week 01 Wednesday recap that reviews Git/context takeaways and next steps (`wednesday-recap.md`)
+- `week01/apis/` - Introduction to building Node.js APIs, including project setup, Express, and REST principles (`apis.md`)
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
