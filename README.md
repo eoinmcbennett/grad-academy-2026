@@ -40,6 +40,11 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `web-authentication/` - Authentication methods for web applications: cookies, sessions, JWT, and best practices for securing user access
 - `week01/` - Week 01 Wednesday recap that reviews Git/context takeaways and next steps (`wednesday-recap.md`)
 - `week01/apis/` - Introduction to building Node.js APIs, including project setup, Express, and REST principles (`apis.md`)
+- `week01/frontend-dev/` - Frontend development fundamentals with Node, TypeScript, Nunjucks, and GOV.UK Design System (`frontend-dev.md`)
+- `week02/ci-cd/` - CI/CD fundamentals: Continuous Integration and Deployment, GitHub Actions, workflows, secrets management, and best practices (`ci-cd.md`)
+- `week02/databases/` - Introduction to databases covering types, relationships, normalisation, SQL (DDL/DML/DQL), ORMs, migrations, Prisma, optimization, and security (`databases.md`)
+- `week02/linting/` - Code linting: automated code analysis, error detection, style enforcement with Biome for Node.js/TypeScript projects, and automatic fixes (`linting.md`)
+- `week02/testing/` - Software testing with Vitest: unit and integration testing fundamentals, best practices, coverage, and using AI to write tests (`testing.md`)
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
