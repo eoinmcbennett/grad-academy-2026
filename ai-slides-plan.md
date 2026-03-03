@@ -183,7 +183,7 @@ For each of these, explain what they are, how to use them and most used in each 
 
 ## Backend – APIs
 
-### Slides
+### Slides 1
 - JavaScript vs TypeScript
 - Node.js + Express + TypeScript setup
 
@@ -191,7 +191,7 @@ For each of these, explain what they are, how to use them and most used in each 
 - Create project with correct tech stack
 - Running project prints “Hello World”
 
-### Slides
+### Slides 2
 - REST APIs: GET, POST, PUT, DELETE
 - HTTP responses and status codes
 - Testing APIs with Insomnia / Postman
@@ -203,7 +203,7 @@ For each of these, explain what they are, how to use them and most used in each 
   - Update entity
   - Delete entity
 
-### Slides
+### Slides 3
 - Express best practices (no logic in routes)
 - MVC structure
 - SOLID with ORM and services
@@ -212,7 +212,7 @@ For each of these, explain what they are, how to use them and most used in each 
 - Controller + service classes
 - Map routes → controllers → services
 
-### Slides
+### Slides 4
 - OOP and encapsulation
 - Models (MVC)
 - Mapper classes
@@ -222,13 +222,13 @@ For each of these, explain what they are, how to use them and most used in each 
 - Create mapper
 - Map service output to model
 
-### Slides
+### Slides 5
 - Validation and error handling
 
 ### Exercise 5
 - Add validation and error handling to controllers
 
-### Slides
+### Slides 6
 - Unit testing
 - Vitest
 - Dependency injection
@@ -241,7 +241,7 @@ For each of these, explain what they are, how to use them and most used in each 
 
 ## SQL, ORMs, and Databases
 
-### Slides
+### Slides 1
 - SQL fundamentals and best practices
 - Optimisation
 - Data types
@@ -251,14 +251,14 @@ For each of these, explain what they are, how to use them and most used in each 
 - Prisma schema
 - Initial migration
 
-### Slides
+### Slides 2
 - Replace mock services with Prisma services
 - Liskov Substitution & Dependency Inversion
 
 ### Exercise 2
 - CRUD services using Prisma
 
-### Slides
+### Slides 3
 - Integration vs unit tests
 
 ### Exercise 3
@@ -268,7 +268,7 @@ For each of these, explain what they are, how to use them and most used in each 
 
 ## Frontend Development
 
-### Slides
+### Slides 1
 - HTML, CSS, JavaScript basics
 - Nunjucks
 - GOV.UK Frontend
@@ -284,14 +284,14 @@ For each of these, explain what they are, how to use them and most used in each 
   - Entity list
 - Pass mock data into templates
 
-### Slides
+### Slides 2
 - Template values from form submissions
 
 ### Exercise 2
 - Update entity page
 - Add update and delete functionality
 
-### Slides
+### Slides 3
 - Axios for backend calls
 
 ### Exercise 3
