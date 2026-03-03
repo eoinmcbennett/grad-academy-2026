@@ -14,6 +14,7 @@ Quick reference guides and cheat sheets covering various topics:
 - `it-acronyms.md` - Common IT acronyms and their meanings
 - `markdown.md` - Markdown syntax and formatting guide
 - `nodejs-typescript-guide.md` - A step-by-step guide to initialize a modern Node.js project with TypeScript using ES modules
+- `solid-principles.md` - SOLID Principles in TypeScript: a complete practical guide with bad/good examples for each principle
 
 
 Curated collections of useful links and resources:
@@ -45,6 +46,16 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `prompt-engineering/` - Prompt engineering best practices for LLMs: clarity, examples, XML tags, roles, long context, chain-of-thought, and output formatting (`prompt-engineering.md`)
 - `prompt-engineering-models/` - Model-specific prompt engineering for Anthropic Claude (Opus 4, Sonnet 4, Haiku 3.5) and OpenAI GPT-5 Codex: autonomy, AGENTS.md, preambles, personality modes, and metaprompting (`prompt-engineering-models.md`)
 - `web-authentication/` - Authentication methods for web applications: cookies, sessions, JWT, and best practices for securing user access
+
+**Week 1 Exercises — `new-slides/week-1/`:**
+
+- `part-4/solid-principles/solid-principles.md` - Slidev presentation covering all five SOLID principles with bad/good TypeScript examples (`npm run dev:solid-principles`)
+- `part-4/exercise-1-srp.md` - Hands-on exercise: refactor a `BlogPost` class that violates the Single Responsibility Principle
+- `part-4/exercise-2-ocp.md` - Hands-on exercise: refactor a `DiscountCalculator` that violates the Open/Closed Principle
+- `part-4/exercise-3-lsp.md` - Hands-on exercise: fix a broken `Square`/`Rectangle` hierarchy that violates the Liskov Substitution Principle
+- `part-4/exercise-4-isp.md` - Hands-on exercise: break apart a fat `Vehicle` interface that violates the Interface Segregation Principle
+- `part-4/exercise-5-dip.md` - Hands-on exercise: decouple a `ReportGenerator` from `PdfExporter` to apply the Dependency Inversion Principle
+- `part-4/solid-exercises.zip` - Runnable TypeScript project containing all 5 exercises (unzip, run `npm install`, then `npm run exercise-N`)
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
