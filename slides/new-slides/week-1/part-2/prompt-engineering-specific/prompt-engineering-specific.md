@@ -295,7 +295,7 @@ layout: default
 | **Tone control** | Role instructions | Friendly / Pragmatic modes |
 
 ---
-layout: end
+layout: default
 ---
 
 # Happy Prompting!

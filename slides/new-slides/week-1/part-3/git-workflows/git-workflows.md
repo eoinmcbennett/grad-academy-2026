@@ -551,7 +551,7 @@ git reset origin/main  # reset to what's on remote
 ```
 
 ---
-layout: end
+layout: default
 ---
 
 # Summary

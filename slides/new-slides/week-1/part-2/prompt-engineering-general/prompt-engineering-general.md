@@ -307,7 +307,7 @@ layout: default
 </div>
 
 ---
-layout: end
+layout: default
 ---
 
 # Happy Prompting!

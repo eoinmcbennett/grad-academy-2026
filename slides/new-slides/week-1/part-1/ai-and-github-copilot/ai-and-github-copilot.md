@@ -458,7 +458,7 @@ Reflect on the iterative process.
 - How did the quality of your prompts affect the outcome?
 
 ---
-layout: end
+layout: default
 ---
 
 # What's Next: Prompt Engineering
