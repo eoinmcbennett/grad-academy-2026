@@ -27,6 +27,8 @@ Guides to effective prompt engineering for large language models:
 - `prompt-engineering.md` - General prompt engineering best practices for any modern LLM (clarity, examples, XML tags, roles, chain-of-thought, formatting)
 - `prompt-engineering-openAI.md` - OpenAI-specific prompt engineering including few-shot learning, RAG, context windows, and GPT-5 / reasoning model guidance
 - `prompt-engineering-openai-2.md` - Codex-specific prompt engineering for the `gpt-5.2-codex` and `gpt-5.3-codex` agentic coding models: autonomy, tool use (apply_patch, shell, parallel calls), AGENTS.md, compaction, preambles, and metaprompting
+- `prompt-engineering-claude-2.md` - Claude-specific prompt engineering covering communication style, verbosity, model self-knowledge, and current API model strings for Opus 4, Sonnet 4, and Haiku 3.5
+- `prompt-engineering-model-specific.md` - Combined model-specific guide covering both Anthropic Claude (Opus 4, Sonnet 4, Haiku 3.5) and OpenAI Codex (`gpt-5.X-codex`): autonomy, AGENTS.md, preambles, personality modes, metaprompting, and Claude communication style
 
 ### �📁 `slides/`
 

@@ -1,20 +1,69 @@
-# Prompt Engineering for OpenAI Codex Models
+# Prompt Engineering — Model-Specific Notes
 
-A guide to Codex-specific prompt engineering best practices sourced from the [OpenAI Codex Prompting Guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide). These techniques extend the general principles in `prompt-engineering.md` and apply specifically to the `gpt-5.X-codex` agentic coding models.
+This file is a supplement to [prompt-engineering.md](prompt-engineering.md). It covers behaviour and techniques specific to individual model families.
 
 ---
 
-## Codex model overview
+## Claude (Anthropic)
 
-Codex is OpenAI's recommended agentic coding model, accessible via the API as `gpt-5.X-codex`. It is designed for long-running, autonomous software engineering tasks and differs from general-purpose GPT models in several key ways:
+Applies to: Claude Opus 4, Sonnet 4, Haiku 3.5 and later.
+
+### Communication style and verbosity
+
+Claude's latest models have a more concise and natural communication style compared to earlier versions:
+
+- **More direct and grounded**: Provides fact-based progress reports rather than self-celebratory updates.
+- **More conversational**: Slightly more fluent and colloquial, less machine-like.
+- **Less verbose**: May skip detailed summaries for efficiency unless prompted otherwise.
+
+This means Claude may skip verbal summaries after tool calls, jumping directly to the next action. If you prefer more visibility into its reasoning:
+
+```text
+After completing a task that involves tool use, provide a quick summary of the work you've done.
+```
+
+### Model self-knowledge
+
+If you need Claude to identify itself correctly in your application or use specific API model strings, set this in the system prompt:
+
+```text
+The assistant is Claude, created by Anthropic. The current model is Claude Sonnet 4.5.
+```
+
+For LLM-powered apps that need to specify model strings programmatically:
+
+```text
+When an LLM is needed, please default to Claude Sonnet 4.5 unless the user requests otherwise.
+The exact model string for Claude Sonnet 4.5 is claude-sonnet-4-5.
+```
+
+### Current model strings
+
+| Model | API string |
+|---|---|
+| Claude Opus 4 | `claude-opus-4-5` |
+| Claude Sonnet 4 | `claude-sonnet-4-5` |
+| Claude Haiku 3.5 | `claude-haiku-3-5` |
+
+> Always check the [Anthropic models overview](https://docs.anthropic.com/en/docs/about-claude/models/overview) for the latest model strings, as these are updated frequently.
+
+---
+
+## Codex (OpenAI)
+
+Applies to: `gpt-5.X-codex` agentic coding models.
+
+Source: [OpenAI Codex Prompting Guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide).
+
+### Model overview
+
+Codex is OpenAI's recommended agentic coding model. It is designed for long-running, autonomous software engineering tasks and differs from general-purpose GPT models in several key ways:
 
 - Operates as an **autonomous senior engineer** — it gathers context, plans, implements, tests, and refines without prompting at each step.
 - Supports **reasoning effort levels**: `medium` (recommended all-rounder), `high`, and `xhigh` (for hardest tasks).
 - Has **first-class compaction support** allowing multi-hour sessions without hitting context window limits.
 
----
-
-## Autonomy and persistence
+### Autonomy and persistence
 
 Unlike general models that may pause and ask questions, Codex is designed to persist until a task is fully resolved. Your prompt should reinforce this:
 
@@ -32,9 +81,7 @@ assumptions; do not end on clarifications unless truly blocked.
 
 > **Important**: Do NOT prompt the model to communicate an upfront plan, preambles, or status updates during a rollout. This can cause the model to stop abruptly before completing the task.
 
----
-
-## Code implementation guidelines
+### Code implementation guidelines
 
 Codex responds well to explicit engineering standards in the system prompt:
 
@@ -48,9 +95,7 @@ Codex responds well to explicit engineering standards in the system prompt:
 | **Batch edits** | Read enough context before editing; avoid micro-edits |
 | **Completeness** | Wire all relevant surfaces; keep behaviour consistent |
 
----
-
-## Codebase exploration patterns
+### Codebase exploration patterns
 
 Tell the model how to navigate the codebase efficiently:
 
@@ -65,9 +110,7 @@ is much faster than alternatives like `grep`. Before making tool calls, decide a
 files you will need and read them together in a single parallel batch.
 ```
 
----
-
-## AGENTS.md: Per-directory instructions
+### AGENTS.md: Per-directory instructions
 
 Codex supports an `AGENTS.md` convention: instruction files placed at `~/.codex` or in any directory from the repo root to the current working directory. The model is trained to closely adhere to these instructions.
 
@@ -77,9 +120,7 @@ Codex supports an `AGENTS.md` convention: instruction files placed at `~/.codex`
 
 This is useful for adding project-specific coding standards, naming conventions, or tooling preferences without repeating them in every prompt.
 
----
-
-## Plan tool hygiene
+### Plan tool hygiene
 
 When using a TODO/plan tool, follow these practices:
 
@@ -90,17 +131,13 @@ When using a TODO/plan tool, follow these practices:
 - Before finishing, reconcile every TODO as `Done`, `Blocked` (with reason), or `Cancelled` (with reason). Do not end with `in_progress` or `pending` items.
 - Do not commit to tests or broad refactors unless you will do them immediately — otherwise label them as optional next steps.
 
----
-
-## Mid-rollout user updates
+### Mid-rollout user updates
 
 Codex uses **reasoning summaries** to communicate progress while working. These are generated by a secondary model and are **not promptable** — do not add instructions related to intermediate plans or messages to the user. Adding such instructions can cause the model to stop early.
 
----
+### GPT-5.3 Codex: Preambles and personality
 
-## GPT-5.3 Codex: Preambles and personality
-
-### Preamble best practices
+#### Preamble best practices
 
 Preambles are short, human-readable progress messages sent alongside tool calls. Guidelines for `gpt-5.3-codex` preambles:
 
@@ -110,7 +147,7 @@ Preambles are short, human-readable progress messages sent alongside tool calls.
 - Cover: outcome/impact so far, next 1–3 steps, and any open questions.
 - Tone: real person pairing — avoid headings, status labels, and log-style language.
 
-### Personality modes
+#### Personality modes
 
 Codex supports two configurable personality modes:
 
@@ -124,9 +161,7 @@ You communicate warmly, check in often, and explain concepts without ego.
 - Fewer social flourishes.
 - Focus on progress and results.
 
----
-
-## Metaprompting for self-improvement
+### Metaprompting for self-improvement
 
 When Codex produces a good result but takes too long or exhibits undesirable patterns, ask it to improve its own instructions:
 
@@ -147,9 +182,7 @@ Common failure modes to address with metaprompting:
 - **Loggy status updates** — unnatural, mechanical progress logs instead of pair programmer collaboration.
 - **Repetitive preamble tics** — phrases like "Good catch", "Aha", "Got it–".
 
----
-
-## Editing constraints
+### Editing constraints
 
 Include these guardrails in your system prompt for safe, predictable file editing:
 
@@ -160,9 +193,7 @@ Include these guardrails in your system prompt for safe, predictable file editin
 - Never use destructive git commands (`git reset --hard`, `git checkout --`) unless specifically approved.
 - If unexpected changes are noticed in files, **stop immediately** and ask the user how to proceed.
 
----
-
-## Summary of Codex-specific techniques
+### Summary of Codex-specific techniques
 
 | Technique | When to use |
 |---|---|
