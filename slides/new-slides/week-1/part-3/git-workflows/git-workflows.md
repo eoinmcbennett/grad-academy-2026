@@ -104,7 +104,7 @@ layout: center
 
 # Keeping Your Branch Up to Date
 
-Merge `main` into your feature branch **regularly** to avoid large conflicts
+Update your branch from `main` **regularly** to avoid large conflicts - two ways to do this
 
 ---
 layout: two-cols-header
@@ -185,7 +185,7 @@ gitGraph
 layout: two-cols-header
 ---
 
-# Rebase Commands
+# Updating via Rebase
 
 ::left::
 
@@ -419,7 +419,7 @@ gitGraph
 <!-- No merge commit needed — the history is already linear. -->
 
 ---
-layout: two-cols-header
+layout: center
 ---
 
 # Fixing Divergent Branches
