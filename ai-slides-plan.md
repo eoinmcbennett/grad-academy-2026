@@ -185,7 +185,8 @@ For each of these, explain what they are, how to use them and most used in each 
 
 ### Slides 1
 - JavaScript vs TypeScript
-- Node.js + Express + TypeScript setup
+- How to Node.js + Express + TypeScript
+- What is a RESTful API
 
 ### Exercise 1
 - Create project with correct tech stack

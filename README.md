@@ -14,6 +14,7 @@ Quick reference guides and cheat sheets covering various topics:
 - `it-acronyms.md` - Common IT acronyms and their meanings
 - `markdown.md` - Markdown syntax and formatting guide
 - `nodejs-typescript-guide.md` - A step-by-step guide to initialize a modern Node.js project with TypeScript using ES modules
+- `restful-apis.md` - RESTful API quick reference: HTTP methods, status codes, URI design, authentication, versioning, and best practices
 - `solid-principles.md` - SOLID Principles in TypeScript: a complete practical guide with bad/good examples for each principle
 
 
@@ -42,6 +43,7 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `git-workflows/` - Git branching, commit/push workflow, merge vs rebase with diagrams, fixing divergent branches, and common team issues (`git-workflows.md`)
 - `js-vs-ts/` - JavaScript vs TypeScript comparison presentation
 - `logging/` - Logging best practices for NodeJS Express backend and frontend applications, covering log levels, structured logging, security, and environment-specific configuration (`logging-practices.md`)
+- `node-ts-rest-api/` - Combined presentation covering JavaScript vs TypeScript, setting up Node.js + Express + TypeScript, and designing RESTful APIs (`node-ts-rest-api.md`, `npm run dev:node-ts-rest-api`)
 - `password-storage/` - Password storage in databases: from naive approaches (plaintext) to modern secure methods (bcrypt, Argon2) with salt
 - `prompt-engineering/` - Prompt engineering best practices for LLMs: clarity, examples, XML tags, roles, long context, chain-of-thought, and output formatting (`prompt-engineering.md`)
 - `prompt-engineering-models/` - Model-specific prompt engineering for Anthropic Claude (Opus 4, Sonnet 4, Haiku 3.5) and OpenAI GPT-5 Codex: autonomy, AGENTS.md, preambles, personality modes, and metaprompting (`prompt-engineering-models.md`)
