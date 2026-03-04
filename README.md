@@ -58,6 +58,8 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-4/exercise-4-isp.md` - Hands-on exercise: break apart a fat `Vehicle` interface that violates the Interface Segregation Principle
 - `part-4/exercise-5-dip.md` - Hands-on exercise: decouple a `ReportGenerator` from `PdfExporter` to apply the Dependency Inversion Principle
 - `part-4/solid-exercises.zip` - Runnable TypeScript project containing all 5 exercises (unzip, run `npm install`, then `npm run exercise-N`)
+- `part-5/part-2/rest-api-routes/rest-api-routes.md` - HTTP methods (GET, POST, PUT, DELETE), status codes, creating Express routes, and testing with Insomnia/Postman (`npm run dev:rest-api-routes`)
+- `part-5/part-2/exercise-2-add-routes.md` - Hands-on exercise: add expense routes to the Express app returning static JSON responses
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 

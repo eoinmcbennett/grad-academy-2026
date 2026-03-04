@@ -195,14 +195,20 @@ For each of these, explain what they are, how to use them and most used in each 
 ### Slides 2
 - REST APIs: GET, POST, PUT, DELETE
 - HTTP responses and status codes
+- Creating routes in your express app
 - Testing APIs with Insomnia / Postman
 
 ### Exercise 2
-- Routes for:
-  - Get single entity
-  - Get list
-  - Update entity
-  - Delete entity
+- Create routes for:
+  - Get single expense
+  - Get list of expenses
+  - Update update an expense
+  - Delete an expense
+- an expense json object will look like:
+  - id: 1
+  - date: 20-10-2026
+  - description: Lunch with a client
+  - user: Joe Blogs
 
 ### Slides 3
 - Express best practices (no logic in routes)
