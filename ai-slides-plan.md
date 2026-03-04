@@ -213,11 +213,13 @@ For each of these, explain what they are, how to use them and most used in each 
 ### Slides 3
 - Express best practices (no logic in routes)
 - MVC structure
-- SOLID with ORM and services
+- Using with controllers and services - how it follows SOLID
+- Controller should have logic + error handling in it
+- Service will call the db to retrieve info, typically an ORM - will use mock for now
 
 ### Exercise 3
 - Controller + service classes
-- Map routes → controllers → services
+- Map routes to controller methods then call mock service from controller
 
 ### Slides 4
 - OOP and encapsulation

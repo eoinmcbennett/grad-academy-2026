@@ -337,6 +337,22 @@ Routes are now available at `/api/posts`.
 
 ---
 
+## Your File Structure So Far
+
+After adding your router, your project should look like this:
+
+```
+src/
+  index.ts              ← entry point — sets up Express and registers routers
+  routes/
+    expenseRouter.ts    ← all expense routes live here
+dist/                   ← compiled output (git-ignored)
+```
+
+> Keep route definitions in `routes/` — `index.ts` should only wire things together.
+
+---
+
 ## Route Summary
 
 ```

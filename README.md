@@ -60,6 +60,8 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-4/solid-exercises.zip` - Runnable TypeScript project containing all 5 exercises (unzip, run `npm install`, then `npm run exercise-N`)
 - `part-5/part-2/rest-api-routes/rest-api-routes.md` - HTTP methods (GET, POST, PUT, DELETE), status codes, creating Express routes, and testing with Insomnia/Postman (`npm run dev:rest-api-routes`)
 - `part-5/part-2/exercise-2-add-routes.md` - Hands-on exercise: add expense routes to the Express app returning static JSON responses
+- `part-5/part-3/mvc-controllers-services/mvc-controllers-services.md` - Express best practices (thin routes), MVC structure, controllers with error handling, services with mock data, and how the pattern follows SOLID principles (`npm run dev:mvc-controllers-services`)
+- `part-5/part-3/exercise-3-controllers-and-services.md` - Hands-on exercise: refactor the expenses API by extracting `ExpenseController` and `ExpenseService` classes, keeping routes thin and following the MVC + SOLID pattern
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
