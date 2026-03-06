@@ -103,7 +103,7 @@ flowchart LR
 | **View** | User interface & response | HTML templates, JSON response | Routes define what the View returns |
 | **Controller** | Request handler & orchestrator | `PostController` | Validates input, calls Service, sends response |
 | **Service** | Business logic & data access | `PostService` | Fetches/persists via ORM or mock data |
-| **Model** | Data structure & validation | `Post` interface/class | Defines shape of your data |
+| **Model** | Data structure & validation | `post.ts` | Defines the shape of your data — covered in Part 4 |
 
 > In this phase, we're building the **backend** — the View will be HTML templates (frontend week).
 
@@ -184,20 +184,19 @@ The service handles **data access** and any business logic.
 
 ```typescript
 // src/services/postService.ts
-import { Post } from "../models/post";
 
 // Mock data — later replaced by a real ORM (e.g. Prisma)
-const mockPosts: Post[] = [
+const mockPosts: any[] = [
   { id: 1, title: "Getting Started", content: "TypeScript basics...", author: "Alice" },
   { id: 2, title: "Advanced Patterns", content: "Generics explained...", author: "Bob" },
 ];
 
 export class PostService {
-  async findById(id: number): Promise<Post | undefined> {
+  async findById(id: number): Promise<any> {
     return mockPosts.find(p => p.id === id);
   }
 
-  async findAll(): Promise<Post[]> {
+  async findAll(): Promise<any[]> {
     return mockPosts;
   }
 }

@@ -62,6 +62,8 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-5/part-2/exercise-2-add-routes.md` - Hands-on exercise: add expense routes to the Express app returning static JSON responses
 - `part-5/part-3/mvc-controllers-services/mvc-controllers-services.md` - Express best practices (thin routes), MVC structure, controllers with error handling, services with mock data, and how the pattern follows SOLID principles (`npm run dev:mvc-controllers-services`)
 - `part-5/part-3/exercise-3-controllers-and-services.md` - Hands-on exercise: refactor the expenses API by extracting `ExpenseController` and `ExpenseService` classes, keeping routes thin and following the MVC + SOLID pattern
+- `part-5/part-4/models-and-dtos/models-and-dtos.md` - OOP and encapsulation, why `any` is dangerous, domain model classes vs DTOs, and how the controller builds typed DTO responses from encapsulated model instances, with SOLID principles explained at each step (`npm run dev:models-and-dtos`)
+- `part-5/part-4/exercise-4-models-and-dtos.md` - Hands-on exercise: replace all `any` types in the expenses API with a typed `Expense` class (with constructor validation), `ExpenseResponseDto` and `CreateExpenseRequestDto`, updating the service and controller to use them
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
