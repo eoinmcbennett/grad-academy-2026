@@ -2,6 +2,8 @@
 
 In this exercise you'll replace all uses of `any` in your expenses API with proper types. You'll create a domain model class with constructor validation, define DTOs to control what enters and leaves your API, and update the service and controller to use them.
 
+Refer back to the slides for patterns and examples — the goal is to work out the implementation yourself.
+
 ---
 
 ## What You're Building
@@ -29,16 +31,14 @@ src/
 
 ### 1a — Start with an interface
 
-Create a new file at `src/models/expense.ts` and define an interface first:
+Create `src/models/expense.ts` and define an `Expense` interface with these fields:
 
-```typescript
-export interface Expense {
-  id: number;
-  date: string;
-  description: string;
-  user: string;
-}
-```
+| Field | Type |
+|---|---|
+| `id` | `number` |
+| `date` | `string` |
+| `description` | `string` |
+| `user` | `string` |
 
 Update `ExpenseService` to replace `any[]` with `Expense[]`. Run the app and confirm TypeScript is happy before continuing.
 
@@ -46,24 +46,10 @@ Update `ExpenseService` to replace `any[]` with `Expense[]`. Run the app and con
 
 ### 1b — Upgrade to a class with validation
 
-Replace the interface with a class that enforces invariants in the constructor:
+Replace the interface with a **class** using `public readonly` constructor parameters. Add validation in the constructor body for each field:
 
-```typescript
-// src/models/expense.ts
-export class Expense {
-  constructor(
-    public readonly id: number,
-    public readonly date: string,
-    public readonly description: string,
-    public readonly user: string,
-  ) {
-    if (id <= 0) throw new Error("ID must be positive");
-    if (!date.trim()) throw new Error("Date cannot be empty");
-    if (!description.trim()) throw new Error("Description cannot be empty");
-    if (!user.trim()) throw new Error("User cannot be empty");
-  }
-}
-```
+- `id` must be greater than 0
+- `date`, `description`, and `user` must not be empty strings
 
 > **Why a class?** `readonly` prevents accidental mutation after creation, and the constructor guarantees invalid `Expense` objects can never be constructed — validation is in one place, not scattered across the codebase.
 
@@ -71,65 +57,33 @@ export class Expense {
 
 ## Step 2 — Create DTOs
 
-Create a new file at `src/dtos/expenseDto.ts` with two interfaces:
+Create `src/dtos/expenseDto.ts` with **two interfaces**:
 
-```typescript
-// src/dtos/expenseDto.ts
+**`ExpenseResponseDto`** — what the client receives. Fields: `id`, `date`, `description`, `user`.
 
-export interface ExpenseResponseDto {
-  id: number;
-  date: string;
-  description: string;
-  user: string;
-}
+**`CreateExpenseRequestDto`** — what the client sends when creating an expense. Fields: `date`, `description`, `user`.
 
-export interface CreateExpenseRequestDto {
-  date: string;
-  description: string;
-  user: string;
-}
-```
+> Notice `id` is absent from the request DTO — clients never supply an `id`, the server generates it.
 
-**Why two separate types?**
-
-- `ExpenseResponseDto` controls exactly what clients see — if you later add sensitive internal fields to `Expense`, they won't accidentally appear in responses
-- `CreateExpenseRequestDto` types incoming request bodies — clients never supply an `id` (the server generates it)
+**Why two separate types?** If you later add sensitive internal fields to `Expense`, they won't accidentally appear in responses. Each type has one clear job.
 
 ---
 
 ## Step 3 — Update the ExpenseService
 
-Replace the `any[]` mock data with `Expense` class instances and update all method signatures:
+Replace `any` with the proper types throughout the service:
 
-| Before | After |
-|--------|-------|
-| `const mockExpenses: any[]` | `const mockExpenses: Expense[]` |
-| `findAll(): Promise<any[]>` | `findAll(): Promise<Expense[]>` |
-| `findById(id): Promise<any>` | `findById(id): Promise<Expense \| undefined>` |
-| `create(expense: any): Promise<any>` | `create(data: CreateExpenseRequestDto): Promise<Expense>` |
-| `update(id, expense: any): Promise<any>` | `update(id, data: CreateExpenseRequestDto): Promise<Expense \| undefined>` |
+| Method | Parameter types | Return type |
+|--------|----------------|-------------|
+| `findAll` | — | `Promise<Expense[]>` |
+| `findById` | `id: number` | `Promise<Expense \| undefined>` |
+| `create` | `data: CreateExpenseRequestDto` | `Promise<Expense>` |
+| `update` | `id: number`, `data: CreateExpenseRequestDto` | `Promise<Expense \| undefined>` |
+| `delete` | `id: number` | `Promise<boolean>` |
 
-### Your mock data should use the class constructor:
+Update the mock data array to store `Expense` class instances (using `new Expense(...)`).
 
-```typescript
-import { Expense } from "../models/expense";
-
-const mockExpenses: Expense[] = [
-  new Expense(1, "20-10-2026", "Lunch with a client", "Joe Bloggs"),
-  new Expense(2, "21-10-2026", "Train to Edinburgh", "Jane Smith"),
-];
-```
-
-### The `create` method should construct a new `Expense`:
-
-```typescript
-async create(data: CreateExpenseRequestDto): Promise<Expense> {
-  const id = Math.max(...mockExpenses.map(e => e.id), 0) + 1;
-  const expense = new Expense(id, data.date, data.description, data.user);
-  mockExpenses.push(expense);
-  return expense;
-}
-```
+In `create`, generate a new `id` from the current maximum in the array, construct a `new Expense`, push it, and return it.
 
 > The `Expense` constructor will throw if any field is empty — invalid data never reaches the array.
 
@@ -137,76 +91,23 @@ async create(data: CreateExpenseRequestDto): Promise<Expense> {
 
 ## Step 4 — Update the ExpenseController
 
-The controller should now build an `ExpenseResponseDto` before sending any response, instead of returning `Expense` instances directly.
+The controller should **build an `ExpenseResponseDto`** before sending any response, instead of returning `Expense` instances directly.
 
-### For `getAll`:
+For each method that returns expense data (`getAll`, `getById`, `create`, `update`):
 
-```typescript
-async getAll(req: Request, res: Response): Promise<void> {
-  const expenses = await this.service.findAll();
-  const dtos: ExpenseResponseDto[] = expenses.map(e => ({
-    id: e.id,
-    date: e.date,
-    description: e.description,
-    user: e.user,
-  }));
-  res.status(200).json(dtos);
-}
-```
+1. Get the `Expense` instance(s) from the service
+2. Map the fields into an `ExpenseResponseDto` object (or array)
+3. Send the DTO in the response — not the `Expense` instance
 
-### For `getById`:
-
-```typescript
-async getById(req: Request, res: Response): Promise<void> {
-  const id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.status(400).json({ error: "ID must be a number" });
-    return;
-  }
-  const expense = await this.service.findById(id);
-  if (!expense) {
-    res.status(404).json({ error: "Expense not found" });
-    return;
-  }
-  const dto: ExpenseResponseDto = {
-    id: expense.id,
-    date: expense.date,
-    description: expense.description,
-    user: expense.user,
-  };
-  res.status(200).json(dto);
-}
-```
-
-Apply the same pattern (`Expense` → `ExpenseResponseDto`) in `create` and `update`.
+> Only the fields declared on `ExpenseResponseDto` should appear in the JSON response.
 
 ---
 
 ## Step 5 — Type the Request Body in `create`
 
-Use `CreateExpenseRequestDto` to type the incoming body:
+In the controller's `create` method, type `req.body` as `CreateExpenseRequestDto`. Validate that all required fields are present before passing it to the service.
 
-```typescript
-async create(req: Request, res: Response): Promise<void> {
-  const body: CreateExpenseRequestDto = req.body;
-
-  if (!body.date || !body.description || !body.user) {
-    res.status(400).json({ error: "date, description and user are required" });
-    return;
-  }
-
-  const expense = await this.service.create(body);
-  const dto: ExpenseResponseDto = {
-    id: expense.id,
-    date: expense.date,
-    description: expense.description,
-    user: expense.user,
-  };
-  res.status(201).json(dto);
-}
-```
-
-> The controller validates that fields are present, then passes the typed body to the service. The `Expense` constructor acts as a second line of defence.
+The controller checks fields are present; the `Expense` constructor acts as a second line of defence against invalid data.
 
 ---
 
