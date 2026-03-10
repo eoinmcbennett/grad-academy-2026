@@ -69,6 +69,16 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-5/part-6/unit-testing/unit-testing.md` - Why unit tests matter, the testing pyramid, Vitest as a TypeScript-native test runner, covering all scenarios (happy path, empty results, not found, validation errors, server errors), dependency injection enabling mock injection in controller and service tests, and Supertest for testing routes at the HTTP level without starting a real server (`npm run dev:unit-testing`)
 - `part-5/part-6/exercise-6-unit-testing.md` - Hands-on exercise: install Vitest and Supertest, extract `app.ts`, update the controller to accept an injected service, write service tests, controller tests with mocked req/res and service, and route tests using Supertest with `vi.mock`
 
+**Week 1 AI Module — `new-slides/week-1/new-part-1/`:**
+
+- `new-part-1/mcp-servers/mcp-servers.md` - Model Context Protocol: what MCP is, how it works, architecture, setting up Context7 in VS Code, security considerations, and when not to use it (`npm run dev:mcp-servers`)
+- `new-part-1/github-copilot-tour/github-copilot-tour.md` - GitHub Copilot Tour: what a Copilot is, Copilot + You workflow, GitHub Copilot overview, installation, Ask/Plan/Agent modes, models and use cases, context window management, and chat features (slash commands, participants, variables, tools) (`npm run dev:github-copilot-tour`)
+- `new-part-1/using-and-creating-agents/using-and-creating-agents.md` - Using and Creating Agents: agentic AI vs custom agents, why use custom agents, the Copilot instruction ecosystem, `.agent.md` file structure, header fields, writing effective instructions, best practices, handoffs for chaining agents, examples, and a practical exercise (`npm run dev:using-and-creating-agents`)
+- `new-part-1/prompt-engineering/prompt-engineering.md` - Prompt Engineering: how to think about Copilot when prompting, be clear and direct, "don't do this" prompts, adding context, meta prompting, role prompting, few-shot learning, chain of thought, XML tagging, and DO/DON'T guardrails (`npm run dev:prompt-engineering-new`)
+- `new-part-1/context-engineering/context-engineering.md` - Context Engineering: what it is, why we need it, manual context handling strategies, automatic sub-agent architectures, the Ralph Wiggum Loop, and a practical build exercise (`npm run dev:context-engineering-new`)
+- `new-part-1/prompt-engineering-specific/prompt-engineering-specific.md` - Prompt Engineering Specific: advanced prompt engineering techniques and patterns for specific use cases (`npm run dev:prompt-engineering-specific`)
+- `new-part-1/exercise-1-app-with-prompt-eng.md` - Hands-on exercise: recreate the app idea from part 1 using prompt engineering best practices, including setting timers, presets, and styling
+
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
 ## Quick Start
