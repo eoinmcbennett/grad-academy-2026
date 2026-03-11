@@ -14,6 +14,7 @@ Quick reference guides and cheat sheets covering various topics:
 - `it-acronyms.md` - Common IT acronyms and their meanings
 - `markdown.md` - Markdown syntax and formatting guide
 - `nodejs-typescript-guide.md` - A step-by-step guide to initialize a modern Node.js project with TypeScript using ES modules
+- `prisma-setup-guide.md` - Full Prisma ORM setup guide for Node.js + Express + TypeScript: install, schema, migrations, CRUD service/controller, seeding, Studio, and query examples (blog posts domain, SQLite)
 - `restful-apis.md` - RESTful API quick reference: HTTP methods, status codes, URI design, authentication, versioning, and best practices
 - `solid-principles.md` - SOLID Principles in TypeScript: a complete practical guide with bad/good examples for each principle
 
@@ -68,6 +69,16 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-5/part-5/exercise-5-validation.md` - Hands-on exercise: install Zod, define schemas for request bodies and route parameters in `expenseDto.ts`, create `validateBody` and `validateParams` middleware, and wire them into the expense router using `.bind()`
 - `part-5/part-6/unit-testing/unit-testing.md` - Why unit tests matter, the testing pyramid, Vitest as a TypeScript-native test runner, covering all scenarios (happy path, empty results, not found, validation errors, server errors), dependency injection enabling mock injection in controller and service tests, and Supertest for testing routes at the HTTP level without starting a real server (`npm run dev:unit-testing`)
 - `part-5/part-6/exercise-6-unit-testing.md` - Hands-on exercise: install Vitest and Supertest, extract `app.ts`, update the controller to accept an injected service, write service tests, controller tests with mocked req/res and service, and route tests using Supertest with `vi.mock`
+
+**Week 1 Frontend — `new-slides/week-1/part-6/`:**
+
+- `part-6/frontend-dev/frontend-dev.md` - Frontend Development: HTML/CSS/JS basics, Nunjucks templating (syntax, filters, inheritance), GOV.UK Design System setup, using GDS macros, base templates, UI project structure, and wiring up a forked frontend starter — controller calls a backend service, router maps URLs, Nunjucks template renders the data (`npm run dev:frontend-dev`)
+
+**Week 1 Databases — `new-slides/week-1/part-5/`:**
+
+- `part-5/intro-to-sql/intro-to-sql.md` - Introduction to SQL: normalisation (1NF–3NF), relationships, keys, DDL/DML/DQL, JOINs, ORMs, Prisma, migrations, optimisation, security (SQL injection), and NoSQL comparison (`npm run dev:intro-to-sql`)
+- `part-5/prisma-setup/prisma-setup.md` - Setting Up Prisma ORM: install, initialise, schema definition (Expense model), migrations, client generation, singleton, and Prisma-backed service layer. Ends with Exercise 7 (`npm run dev:prisma-setup`)
+- `part-5/prisma-config/prisma-config.md` - Integrating Prisma into Your API: wiring the Prisma service into the existing controller and routes, seeding, Prisma Studio, CLI reference, query examples (filtering, pagination, aggregation), tips & gotchas. Ends with Exercise 8 (`npm run dev:prisma-config`)
 
 **Week 1 AI Module — `new-slides/week-1/new-part-1/`:**
 
