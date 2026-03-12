@@ -17,6 +17,7 @@ Quick reference guides and cheat sheets covering various topics:
 - `prisma-setup-guide.md` - Full Prisma ORM setup guide for Node.js + Express + TypeScript: install, schema, migrations, CRUD service/controller, seeding, Studio, and query examples (blog posts domain, SQLite)
 - `restful-apis.md` - RESTful API quick reference: HTTP methods, status codes, URI design, authentication, versioning, and best practices
 - `solid-principles.md` - SOLID Principles in TypeScript: a complete practical guide with bad/good examples for each principle
+- `draft-copilot-instructions.md` - Code review instructions for trainee PRs: design, naming, error handling, security, testing, architecture, and data structure best practices aligned with academy course content
 
 
 Curated collections of useful links and resources:
@@ -73,6 +74,11 @@ Presentation materials created with [Slidev](https://sli.dev/):
 **Week 1 Frontend — `new-slides/week-1/part-6/`:**
 
 - `part-6/frontend-dev/frontend-dev.md` - Frontend Development: HTML/CSS/JS basics, Nunjucks templating (syntax, filters, inheritance), GOV.UK Design System setup, using GDS macros, base templates, UI project structure, and wiring up a forked frontend starter — controller calls a backend service, router maps URLs, Nunjucks template renders the data (`npm run dev:frontend-dev`)
+- `part-6/frontend-forms/frontend-forms.md` - Frontend Forms & User Input: how HTML forms submit data (method/action/name), express.urlencoded() middleware, reading form data with req.body, the Post/Redirect/Get pattern, shared create/edit templates with Nunjucks conditionals, route ordering pitfalls, GOV.UK form components, delete via POST, and the full CRUD flow (`npm run dev:frontend-forms`)
+- `part-6/exercise-9-frontend.md` - Hands-on exercise: set up Nunjucks and GOV.UK Frontend from scratch — install packages, configure the templating engine, serve static assets, create a base layout with header/footer partials, wire up GET routes, and build list and detail pages for expenses
+- `part-6/exercise-10-frontend-forms.md` - Hands-on exercise: add forms and write operations to the expenses frontend — HTML form submissions, the Post/Redirect/Get pattern, create/edit form template with conditionals, update/delete routes, and wiring form data through to the controller
+- `part-6/axios-api-calls/axios-api-calls.md` - Calling the Backend API with Axios: two-service architecture, configuring separate ports via `.env` files for frontend and backend, creating a typed Axios client, GET/POST/PUT/DELETE service functions, error handling with `axios.isAxiosError()`, and wiring the API service into the MVC frontend (`npm run dev:axios-api-calls`)
+- `part-6/exercise-11-axios-api-calls.md` - Hands-on exercise: replace the in-memory service in the frontend with real Axios HTTP calls to the backend API — configure ports via `.env`, create a shared Axios client, write typed service functions for all five CRUD operations with error handling, update the controller, and verify the full browser → frontend → backend → database flow
 
 **Week 1 Databases — `new-slides/week-1/part-5/`:**
 
