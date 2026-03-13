@@ -106,6 +106,8 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `week-2-and-3/password-storage/password-storage.md` - Password Storage in Databases: plaintext vs encryption vs hashing vs bcrypt/Argon2, salting, rainbow tables, and the `crack-password.js` demo tool (`npm run dev:password-storage`)
 - `week-2-and-3/team-project-kickoff/team-project-kickoff.md` - Team Project Kickoff: merge-to-main rules (teammate approval first, then trainer/mentor), what makes a good PR (ticket link, description, testing), code review approach using the self-review checklist, and how to split work as a team (end-to-end ownership, layer split, or pair programming) (`npm run dev:team-project-kickoff`)
 - `week-2-and-3/web-authentication/web-authentication.md` - Web Authentication: cookies, sessions (in-memory/Redis/DB), JWT structure and flow, token storage (cookie vs header), best practices, and when to use sessions vs JWT (`npm run dev:web-authentication`)
+- `week-2-and-3/owasp-top-10/owasp-top-10.md` - OWASP Top 10:2025: all ten critical web application security risks — what each is, how attacks work, why it's dangerous, and how to defend against it. Based on official OWASP 2025 data (`npm run dev:owasp-top-10`)
+- `week-2-and-3/logging/logging.md` - Logging in TypeScript Node.js & Express: why logging matters, log levels, what to log and what not to log, best practices (structured logs, context, security), setting up Winston with custom levels/colours/transports, integrating Morgan for HTTP request logging, and environment-aware configuration (`npm run dev:logging-new`)
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
