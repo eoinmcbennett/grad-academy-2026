@@ -18,6 +18,7 @@ Quick reference guides and cheat sheets covering various topics:
 - `restful-apis.md` - RESTful API quick reference: HTTP methods, status codes, URI design, authentication, versioning, and best practices
 - `solid-principles.md` - SOLID Principles in TypeScript: a complete practical guide with bad/good examples for each principle
 - `draft-copilot-instructions.md` - Code review instructions for trainee PRs: design, naming, error handling, security, testing, architecture, and data structure best practices aligned with academy course content
+- `pull_request_template.md` - PR template for student repositories: self-review checklist covering design, TypeScript types, validation, error handling, security, Prisma, frontend, and testing
 
 
 Curated collections of useful links and resources:
@@ -39,17 +40,16 @@ Guides to effective prompt engineering for large language models:
 Presentation materials created with [Slidev](https://sli.dev/):
 
 - `app-configuration/` - Application configuration in Node.js. Managing application settings with environment variables and .env files
-- `cryptography-101/` - Basic introduction to cryptography covering hashing, symmetric/asymmetric encryption, signatures, and more
+- `cryptography-101/` - Basic introduction to cryptography covering hashing, symmetric/asymmetric encryption, signatures, and more — moved to `new-slides/week-2-and-3/`
 - `di/` - Dependency Injection concepts and patterns
 - `github-copilot/` - Introduction to AI, LLMs, GitHub Copilot, modes, models, context management, and chat features (`github-copilot.md`)
 - `git-workflows/` - Git branching, commit/push workflow, merge vs rebase with diagrams, fixing divergent branches, and common team issues (`git-workflows.md`)
 - `js-vs-ts/` - JavaScript vs TypeScript comparison presentation
 - `logging/` - Logging best practices for NodeJS Express backend and frontend applications, covering log levels, structured logging, security, and environment-specific configuration (`logging-practices.md`)
 - `node-ts-rest-api/` - Combined presentation covering JavaScript vs TypeScript, setting up Node.js + Express + TypeScript, and designing RESTful APIs (`node-ts-rest-api.md`, `npm run dev:node-ts-rest-api`)
-- `password-storage/` - Password storage in databases: from naive approaches (plaintext) to modern secure methods (bcrypt, Argon2) with salt
-- `prompt-engineering/` - Prompt engineering best practices for LLMs: clarity, examples, XML tags, roles, long context, chain-of-thought, and output formatting (`prompt-engineering.md`)
+- `password-storage/` - Password storage in databases: from naive approaches (plaintext) to modern secure methods (bcrypt, Argon2) with salt — moved to `new-slides/week-2-and-3/`
+- `web-authentication/` - Authentication methods for web applications: cookies, sessions, JWT, and best practices for securing user access — moved to `new-slides/week-2-and-3/`
 - `prompt-engineering-models/` - Model-specific prompt engineering for Anthropic Claude (Opus 4, Sonnet 4, Haiku 3.5) and OpenAI GPT-5 Codex: autonomy, AGENTS.md, preambles, personality modes, and metaprompting (`prompt-engineering-models.md`)
-- `web-authentication/` - Authentication methods for web applications: cookies, sessions, JWT, and best practices for securing user access
 
 **Week 1 Exercises — `new-slides/week-1/`:**
 
@@ -95,6 +95,17 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `new-part-1/context-engineering/context-engineering.md` - Context Engineering: what it is, why we need it, manual context handling strategies, automatic sub-agent architectures, the Ralph Wiggum Loop, and a practical build exercise (`npm run dev:context-engineering-new`)
 - `new-part-1/prompt-engineering-specific/prompt-engineering-specific.md` - Prompt Engineering Specific: advanced prompt engineering techniques and patterns for specific use cases (`npm run dev:prompt-engineering-specific`)
 - `new-part-1/exercise-1-app-with-prompt-eng.md` - Hands-on exercise: recreate the app idea from part 1 using prompt engineering best practices, including setting timers, presets, and styling
+
+**Weeks 2 & 3 — `new-slides/week-2-and-3/`:**
+
+- `week-2-and-3/ci-cd/ci-cd.md` - CI/CD Fundamentals: what CI/CD is, GitHub Actions workflows, triggers, marketplace actions, secrets management, typical pipeline flow, branch protection rules, quality gates, and a hands-on exercise to build a PR validation pipeline (`npm run dev:ci-cd`)
+- `week-2-and-3/cryptography-101/cryptography-101.md` - Cryptography 101: hashing, symmetric/asymmetric encryption, digital signatures, certificates, PKI, and best practices (`npm run dev:crypto`)
+- `week-2-and-3/linting/linting.md` - Code Linting: what linting is, linting rules, Biome as an all-in-one formatter and linter, configuration, running Biome, automatic fixes, and package.json scripts (`npm run dev:linting`)
+- `week-2-and-3/middleware/middleware.md` - Middleware in Express: what middleware is, the request-response pipeline, built-in middleware (express.json, express.urlencoded, express.static), custom middleware, middleware order, application vs route scope, error handling middleware, and common third-party middleware (cors, helmet, morgan) (`npm run dev:middleware`)
+- `week-2-and-3/caching/caching.md` - Caching: why caching matters, in-memory caching, distributed caching (Redis), HTTP/browser caching, CDN caching, database query caching, cache invalidation strategies (Cache-Aside, Write-Through, TTL), eviction policies (LRU, LFU, FIFO), and common pitfalls (stampede, stale data, sensitive data leaks) (`npm run dev:caching`)
+- `week-2-and-3/password-storage/password-storage.md` - Password Storage in Databases: plaintext vs encryption vs hashing vs bcrypt/Argon2, salting, rainbow tables, and the `crack-password.js` demo tool (`npm run dev:password-storage`)
+- `week-2-and-3/team-project-kickoff/team-project-kickoff.md` - Team Project Kickoff: merge-to-main rules (teammate approval first, then trainer/mentor), what makes a good PR (ticket link, description, testing), code review approach using the self-review checklist, and how to split work as a team (end-to-end ownership, layer split, or pair programming) (`npm run dev:team-project-kickoff`)
+- `week-2-and-3/web-authentication/web-authentication.md` - Web Authentication: cookies, sessions (in-memory/Redis/DB), JWT structure and flow, token storage (cookie vs header), best practices, and when to use sessions vs JWT (`npm run dev:web-authentication`)
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
