@@ -322,7 +322,7 @@ Your starter project has the backend logic — you set up the frontend
 
 **What's already done for you:**
 - Express configured in `app.ts`
-- An in-memory `ExpenseService` (returns hardcoded data — no database needed)
+- An in-memory `ExpenseService` (returns hardcoded data — no database/backend endpoints needed)
 - An `ExpenseController` with methods for all CRUD operations
 
 **What you need to do:**

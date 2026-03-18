@@ -79,6 +79,7 @@ Presentation materials created with [Slidev](https://sli.dev/):
 - `part-6/exercise-10-frontend-forms.md` - Hands-on exercise: add forms and write operations to the expenses frontend — HTML form submissions, the Post/Redirect/Get pattern, create/edit form template with conditionals, update/delete routes, and wiring form data through to the controller
 - `part-6/axios-api-calls/axios-api-calls.md` - Calling the Backend API with Axios: two-service architecture, configuring separate ports via `.env` files for frontend and backend, creating a typed Axios client, GET/POST/PUT/DELETE service functions, error handling with `axios.isAxiosError()`, and wiring the API service into the MVC frontend (`npm run dev:axios-api-calls`)
 - `part-6/exercise-11-axios-api-calls.md` - Hands-on exercise: replace the in-memory service in the frontend with real Axios HTTP calls to the backend API — configure ports via `.env`, create a shared Axios client, write typed service functions for all five CRUD operations with error handling, update the controller, and verify the full browser → frontend → backend → database flow
+- `part-6/expenses-frontend/` - Starter project for frontend exercises 9–11: Express app with in-memory `ExpenseService` (hardcoded data) and `ExpenseController` (all CRUD methods). Students install Nunjucks, GOV.UK Frontend, and build views/routes on top
 
 **Week 1 Databases — `new-slides/week-1/part-5/`:**
 
