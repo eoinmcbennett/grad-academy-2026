@@ -108,6 +108,55 @@ flowchart LR
 > In this phase, we're building the **backend** — the View will be HTML templates (frontend week).
 
 ---
+
+## What is a Promise?
+
+A **Promise** represents a value that isn't available yet — but will be in the future.
+
+```typescript
+// Synchronous — blocks until done
+const data = readFileSync("data.json"); // ⏸ everything waits
+
+// Asynchronous — returns a Promise, continues immediately
+const promise = fetch("/api/posts");    // 🚀 non-blocking
+```
+
+| State | Meaning |
+|-------|---------|
+| **Pending** | Operation still in progress |
+| **Fulfilled** | Completed successfully — value is available |
+| **Rejected** | Failed — an error occurred |
+
+> Without Promises, your server would freeze on every database query or API call.
+
+---
+
+## async / await
+
+`async` and `await` let you write asynchronous code that **reads like synchronous code**.
+
+```typescript
+// ❌ Without async/await — nested callbacks ("callback hell")
+fetch("/api/posts")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+
+// ✅ With async/await — clean and readable
+async function getPosts(): Promise<Post[]> {
+  const res = await fetch("/api/posts");
+  const data = await res.json();
+  return data;
+}
+```
+
+- `async` marks a function as returning a `Promise`
+- `await` pauses execution until the Promise resolves
+- Errors are caught with `try/catch` — just like synchronous code
+
+> You'll see `async`/`await` and `Promise<T>` throughout our controllers and services.
+
+---
 layout: center
 ---
 
