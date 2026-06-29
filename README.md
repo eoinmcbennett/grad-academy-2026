@@ -112,6 +112,17 @@ Presentation materials created with [Slidev](https://sli.dev/):
 
 **See [slides/README.md](slides/README.md) for detailed usage instructions**
 
+## 🤖 Copilot Skill
+
+### `grad-academy-tutor`
+
+A portable GitHub Copilot skill that helps junior engineers understand academy course content using this repository as its knowledge source.
+
+- **Location**: [`.github/skills/grad-academy-tutor/SKILL.md`](.github/skills/grad-academy-tutor/SKILL.md)
+- **Usage**: Type `/grad-academy-tutor` in GitHub Copilot Chat (in any repo that has the SKILL.md), then ask any question about course topics
+- **How it works**: The skill maps every topic to its raw GitHub URL in this repo. When invoked, Copilot fetches the relevant slide file(s) on demand — no RAG pipeline, no infrastructure, content stays current automatically
+- **Portable**: Copy the single `SKILL.md` into `.github/skills/grad-academy-tutor/` in any other repository; it will always fetch content from this repo
+
 ## Quick Start
 
 ### Running Presentations Interactively
