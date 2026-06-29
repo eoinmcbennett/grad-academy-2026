@@ -17,3 +17,6 @@ dist/
 # Temporary folders
 tmp/
 temp/
+
+# Local MCP secrets
+.vscode/context7.env

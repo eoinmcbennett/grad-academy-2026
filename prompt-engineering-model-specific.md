@@ -1,0 +1,205 @@
+# Prompt Engineering — Model-Specific Notes
+
+This file is a supplement to [prompt-engineering.md](prompt-engineering.md). It covers behaviour and techniques specific to individual model families.
+
+---
+
+## Claude (Anthropic)
+
+Applies to: Claude Opus 4, Sonnet 4, Haiku 3.5 and later.
+
+### Communication style and verbosity
+
+Claude's latest models have a more concise and natural communication style compared to earlier versions:
+
+- **More direct and grounded**: Provides fact-based progress reports rather than self-celebratory updates.
+- **More conversational**: Slightly more fluent and colloquial, less machine-like.
+- **Less verbose**: May skip detailed summaries for efficiency unless prompted otherwise.
+
+This means Claude may skip verbal summaries after tool calls, jumping directly to the next action. If you prefer more visibility into its reasoning:
+
+```text
+After completing a task that involves tool use, provide a quick summary of the work you've done.
+```
+
+### Model self-knowledge
+
+If you need Claude to identify itself correctly in your application or use specific API model strings, set this in the system prompt:
+
+```text
+The assistant is Claude, created by Anthropic. The current model is Claude Sonnet 4.5.
+```
+
+For LLM-powered apps that need to specify model strings programmatically:
+
+```text
+When an LLM is needed, please default to Claude Sonnet 4.5 unless the user requests otherwise.
+The exact model string for Claude Sonnet 4.5 is claude-sonnet-4-5.
+```
+
+### Current model strings
+
+| Model | API string |
+|---|---|
+| Claude Opus 4 | `claude-opus-4-5` |
+| Claude Sonnet 4 | `claude-sonnet-4-5` |
+| Claude Haiku 3.5 | `claude-haiku-3-5` |
+
+> Always check the [Anthropic models overview](https://docs.anthropic.com/en/docs/about-claude/models/overview) for the latest model strings, as these are updated frequently.
+
+---
+
+## Codex (OpenAI)
+
+Applies to: `gpt-5.X-codex` agentic coding models.
+
+Source: [OpenAI Codex Prompting Guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide).
+
+### Model overview
+
+Codex is OpenAI's recommended agentic coding model. It is designed for long-running, autonomous software engineering tasks and differs from general-purpose GPT models in several key ways:
+
+- Operates as an **autonomous senior engineer** — it gathers context, plans, implements, tests, and refines without prompting at each step.
+- Supports **reasoning effort levels**: `medium` (recommended all-rounder), `high`, and `xhigh` (for hardest tasks).
+- Has **first-class compaction support** allowing multi-hour sessions without hitting context window limits.
+
+### Autonomy and persistence
+
+Unlike general models that may pause and ask questions, Codex is designed to persist until a task is fully resolved. Your prompt should reinforce this:
+
+- Instruct the model to resolve the full task end-to-end **before ending its turn**.
+- Tell it to decompose the query into sub-tasks and verify each is complete.
+- **Bias to action**: the model should make reasonable assumptions and implement rather than asking for clarification unless truly blocked.
+
+```text
+You are an autonomous senior engineer. Once given a direction, proactively gather
+context, plan, implement, test, and refine without waiting for additional prompts.
+Persist until the task is fully handled end-to-end within the current turn.
+Only end your turn when the problem is solved. Bias to implementing with reasonable
+assumptions; do not end on clarifications unless truly blocked.
+```
+
+> **Important**: Do NOT prompt the model to communicate an upfront plan, preambles, or status updates during a rollout. This can cause the model to stop abruptly before completing the task.
+
+### Code implementation guidelines
+
+Codex responds well to explicit engineering standards in the system prompt:
+
+| Principle | What to include in your prompt |
+|---|---|
+| **Root cause focus** | Fix the underlying issue, not just symptoms |
+| **Codebase conventions** | Follow existing patterns, naming, and formatting |
+| **Tight error handling** | No broad `try/catch`; propagate/surface errors explicitly |
+| **Type safety** | Avoid `as any`; prefer proper types and guards |
+| **DRY / search first** | Search for prior art before adding new helpers |
+| **Batch edits** | Read enough context before editing; avoid micro-edits |
+| **Completeness** | Wire all relevant surfaces; keep behaviour consistent |
+
+### Codebase exploration patterns
+
+Tell the model how to navigate the codebase efficiently:
+
+- Use `rg` (ripgrep) over `grep` — it is significantly faster.
+- **Think first**: before any tool call, decide all files/resources needed.
+- **Batch reads**: read multiple files in a single parallel call rather than sequentially.
+- Only make sequential calls when you truly cannot know the next file without seeing a result first.
+
+```text
+When searching for text or files, prefer using `rg` or `rg --files` because `rg`
+is much faster than alternatives like `grep`. Before making tool calls, decide all
+files you will need and read them together in a single parallel batch.
+```
+
+### AGENTS.md: Per-directory instructions
+
+Codex supports an `AGENTS.md` convention: instruction files placed at `~/.codex` or in any directory from the repo root to the current working directory. The model is trained to closely adhere to these instructions.
+
+- Files are merged in order, with later (deeper) directories overriding earlier ones.
+- Each file is injected as its own user-role message near the top of the conversation history.
+- The message format is: `# AGENTS.md instructions for <directory>`
+
+This is useful for adding project-specific coding standards, naming conventions, or tooling preferences without repeating them in every prompt.
+
+### Plan tool hygiene
+
+When using a TODO/plan tool, follow these practices:
+
+- **Skip the plan tool for straightforward tasks** (roughly the easiest 25% of requests).
+- Do not make single-step plans.
+- Update the plan after completing each sub-task.
+- **Never end an interaction with only a plan** — the deliverable is working code.
+- Before finishing, reconcile every TODO as `Done`, `Blocked` (with reason), or `Cancelled` (with reason). Do not end with `in_progress` or `pending` items.
+- Do not commit to tests or broad refactors unless you will do them immediately — otherwise label them as optional next steps.
+
+### Mid-rollout user updates
+
+Codex uses **reasoning summaries** to communicate progress while working. These are generated by a secondary model and are **not promptable** — do not add instructions related to intermediate plans or messages to the user. Adding such instructions can cause the model to stop early.
+
+### GPT-5.3 Codex: Preambles and personality
+
+#### Preamble best practices
+
+Preambles are short, human-readable progress messages sent alongside tool calls. Guidelines for `gpt-5.3-codex` preambles:
+
+- 1 sentence acknowledgement + 1–2 sentence plan **before** any tool calls.
+- Keep most updates to 1–2 sentences; longer only at real milestones.
+- Cadence: at least once every 1–3 execution steps, with a hard floor of every 6 steps or 10 tool calls.
+- Cover: outcome/impact so far, next 1–3 steps, and any open questions.
+- Tone: real person pairing — avoid headings, status labels, and log-style language.
+
+#### Personality modes
+
+Codex supports two configurable personality modes:
+
+**Friendly** — warm, partner-like pairing energy; better for onboarding, ambiguous tasks, or higher-stakes changes:
+```text
+You optimize for team morale and being a supportive teammate as much as code quality.
+You communicate warmly, check in often, and explain concepts without ego.
+```
+
+**Pragmatic** — terse, direct, higher ratio of actionable information per token; better when latency matters or users already know the workflow:
+- Fewer social flourishes.
+- Focus on progress and results.
+
+### Metaprompting for self-improvement
+
+When Codex produces a good result but takes too long or exhibits undesirable patterns, ask it to improve its own instructions:
+
+```text
+That was a high quality response, thanks! It seemed like it took you a while to finish
+responding though. Is there a way to clarify your instructions so you can get to a
+response as good as this faster next time?
+
+Think through the response you gave above. Read through your instructions and look for
+anything that might have made you take longer than needed. Write out targeted (but
+generalised) additions/changes/deletions to your instructions to make a request like
+this one faster next time with the same level of quality.
+```
+
+Common failure modes to address with metaprompting:
+
+- **Overthinking / slow starts** — long time before first useful tool call or concrete plan.
+- **Loggy status updates** — unnatural, mechanical progress logs instead of pair programmer collaboration.
+- **Repetitive preamble tics** — phrases like "Good catch", "Aha", "Got it–".
+
+### Editing constraints
+
+Include these guardrails in your system prompt for safe, predictable file editing:
+
+- Default to **ASCII** when creating or editing files; only introduce Unicode when justified and the file already uses it.
+- Add concise code comments only where code is not self-explanatory — avoid obvious comments like `// Assigns the value to the variable`.
+- **Never revert changes you did not make** unless explicitly requested.
+- Do **not** amend commits unless explicitly asked.
+- Never use destructive git commands (`git reset --hard`, `git checkout --`) unless specifically approved.
+- If unexpected changes are noticed in files, **stop immediately** and ask the user how to proceed.
+
+### Summary of Codex-specific techniques
+
+| Technique | When to use |
+|---|---|
+| Autonomy & persistence prompt | Always — removes need for re-prompting at each step |
+| Bias to action | Default; fallback to clarification only when truly blocked |
+| AGENTS.md | Per-project or per-directory coding standards |
+| Personality mode | Adjust tone for user experience (friendly vs pragmatic) |
+| Metaprompting | Fix recurring failure modes like overthinking or loggy updates |
+| No upfront plans in prompt | Prevents early stopping during long rollouts |
