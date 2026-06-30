@@ -1,6 +1,6 @@
-# EAYL Academy 2025
+# EAYL Academy 2026
 
-Welcome to the EAYL Academy 2025 repository! This contains educational materials, presentations, and resources for the academy program.
+Welcome to the EAYL Academy 2026 repository! This contains educational materials, presentations, and resources for the academy program.
 
 ## Repository Structure
 
