@@ -129,7 +129,8 @@ layout: default
 
 # Modes: Plan *(Preview)*
 
-Copilot describes what it *would* do before making any changes.
+Copilot describes what it *would* do before making any changes. Plan mode is designed for complex tasks involving large-scale changes.
+If you want to make a change that may impact multiple files, consider using plan mode to safely explore your codebase before commiting to making changes.
 
 - Review the plan before any edits happen
 - Approve or adjust scope before implementation begins
@@ -145,7 +146,8 @@ layout: default
 
 # Modes: Agent
 
-Copilot autonomously edits files, runs commands, and iterates.
+Copilot autonomously edits files, runs commands, and iterates. 
+Use the agent to make simple, well-scoped changes, or combine it with plan mode to meet more complex performance needs.
 
 - Works across multiple files simultaneously
 - Can run terminal commands
@@ -185,9 +187,10 @@ Choose the right model for the job:
 | Model | Best for |
 |---|---|
 | **GPT-4.1** | General-purpose coding & writing |
-| **Claude Haiku 4.5** | Fast help with simple or repetitive tasks |
-| **Claude Sonnet 4** | Deep reasoning, debugging, complex problems |
-| **Claude Opus 4** | Hardest reasoning tasks |
+| **Claude Haiku or GPT-5 mini** | Cheaper cost, providing fast help with simple or repetitive tasks |
+| **Claude Sonnet or GPT-5** | Deeper reasoning to help debug and solve more complex problems |
+| **GPT 5-3 Codex** | An advanced coding specific, software engineering model |
+| **Claude Opus** | Hardest reasoning and complex tasks |
 
 > Switch models mid-conversation in Copilot Chat
 
