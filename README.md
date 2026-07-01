@@ -83,6 +83,7 @@ Presentation materials created with [Slidev](https://sli.dev/):
 
 **Week 1 Databases — `new-slides/week-1/part-5/`:**
 
+- `part-5/docker-and-postgres-compose/4-docker-and-postgres-compose.md` - Docker and PostgreSQL with Docker Compose: images/containers/volumes, authoring `compose.yaml`, starting and verifying Postgres, connecting with `DATABASE_URL`, lifecycle commands, and troubleshooting common issues (`npm run dev:docker-and-postgres-compose`)
 - `part-5/intro-to-sql/intro-to-sql.md` - Introduction to SQL: normalisation (1NF–3NF), relationships, keys, DDL/DML/DQL, JOINs, ORMs, Prisma, migrations, optimisation, security (SQL injection), and NoSQL comparison (`npm run dev:intro-to-sql`)
 - `part-5/prisma-setup/prisma-setup.md` - Setting Up Prisma ORM: install, initialise, schema definition (Expense model), migrations, client generation, singleton, and Prisma-backed service layer. Ends with Exercise 7 (`npm run dev:prisma-setup`)
 - `part-5/prisma-config/prisma-config.md` - Integrating Prisma into Your API: wiring the Prisma service into the existing controller and routes, seeding, Prisma Studio, CLI reference, query examples (filtering, pagination, aggregation), tips & gotchas. Ends with Exercise 8 (`npm run dev:prisma-config`)
