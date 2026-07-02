@@ -9,10 +9,16 @@ mdc: true
 
 # What is prompt engineering?
 
-The process of crafting specific and clear instructions that guide generative AI models to
-produce accurate, relevant and desired outputs.
+Prompt engineering is about taking a prompt you've written and improving it to get more reliable, higher-quality outputs.
 
-The techniques covered in here will be very useful for you in guiding the output of LLMs.
+Think of AI as a brilliant but new employee who lacks context on your norms and workflows. The more precisely you explain what you want, the better the result.
+
+Golden rule: Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they'd be confused, AI will be too.
+
+Be specific about the desired output format and constraints.
+Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters.
+
+The techniques covered below will be very useful for you in guiding the output of LLMs.
 
 This isn't an exact science you may find some of the techniques we're going to cover work better than others in some cases and vice versa.
 
@@ -47,6 +53,10 @@ any libraries you use. You always write high quality, simple, testable, and loos
 Can you create a template project for a Spring Web API?
 ```
 
+```
+You are a helpful coding assistant specializing in Python.
+```
+
 ### When to use
 - Creating agent files
 - Focusing an LLM on specific task
@@ -56,7 +66,8 @@ Can you create a template project for a Spring Web API?
 
 # Few shot learning
 
-Lets you steer LLMs toward a new task by including a small amount of input / output examples.
+Lets you steer LLMs toward a new task by including a small amount of input / output examples. 
+
 
 Quick and relatively effective method of shaping model outputs.
 
@@ -81,13 +92,15 @@ Output:
 # Chain of thought
 
 Chain of thought prompting can force an LLM to 'think' about it's response deeply.
-This can improve performance for larger, more complex tasks.
-
-This encourages the model to approach a task in a step by step process
+This encourages the model to approach a task in a step by step process, or even suggest that it must think deeply about the task before execution, which can improve performance for larger, complex tasks.
 
 ## Example
 ``` text
 Take a step by step approach, citing any relevant material. Walk me through your reasoning.
+```
+
+``` text
+I need you to update several files related to X. Please think deeply around any necessary dependencies, particularly in regards to the latest release of X. 
 ```
 <br>
 
@@ -103,7 +116,7 @@ If the model is missing alot of edge cases.
 
 # XML Tagging
 
-Structuring your prompt with XML tags to clearly declare intent. Tags can take whatever name you can think of.
+XML tags help AI parse complex prompts unambiguously, especially when your prompt mixes instructions, context, examples, and variable inputs. Wrapping each type of content in its own tag (e.g. <instructions>, <context>, <input>) reduces misinterpretation.
 
 ``` text
 You are an expert at reading financial statements.

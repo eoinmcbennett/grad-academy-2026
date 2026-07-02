@@ -36,7 +36,7 @@ layout: default
 
 # Why Do We Need MCP?
 
-**The Problem:** LLMs have a knowledge cutoff date
+**The Problem:** LLMs have a knowledge cutoff date. Every time we want our AI apps to connect to external tools (Github, Slack, Teams), we needed a one off custom integration. That is a lot of work - but with MCP, we have one standardized way to connect to these apps. MCP is scalable, keeps context and permissions consistent and is an open standard not tied to one vendor.
 
 | Without MCP | With MCP |
 |-------------|----------|
