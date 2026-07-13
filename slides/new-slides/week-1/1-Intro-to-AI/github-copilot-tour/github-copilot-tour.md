@@ -112,6 +112,47 @@ Copilot icon appears in the status bar (bottom right)
 layout: default
 ---
 
+# Installing GitHub Copilot CLI
+The CLI for Github Copilot allows you to use Copilot directly from your terminal.
+Users have reported that it is more direct, searches files without tool calls and generally performs better than Copilot chat.
+
+**Step 1 — Install the CLI on macOS and Linux**
+
+`brew install --cask copilot-cli`
+
+You may need to create an admin by request session to allow installation for it to work in iterm2.
+
+**Step 2 — Use the Github CLI**
+
+1. In your terminal, navigate to a folder that contains code you want to work with.
+2. Enter the word `copilot` and confirm you trust the files in the folder.
+3. The terminal will update in colour and you'll be able to run commands.
+
+**Step 3 — Authorise your Github account**
+1. Log into Github using the `/login` command
+2. Authorise Github using your 2fa code (or passkey)
+3. Begin prompting via the terminal. You will have to approve use of the tool
+
+---
+layout: default
+---
+
+**Some Github CLI user tips**
+- Pressing `esc` will stop Copilot at any time from completing its task
+- Use `shift + command` to swap between plan, autopilot or command mode
+- Hold `option` to copy any text from the terminal to your clipboard
+- You can attach pictures or PDFs to your prompts when using a model which supports it. Reference the image by:
+    - Using @ with the filepath
+    - Copy and paste an image from your clipboard
+    - Drag and drop an image to the terminal to add it
+- If you want to run commands in the terminal without calling the model, just add `!` for example `!git add .` or `!npm install`
+- Slash commands can be accessed with `/` - a useful skill is`/compact` which will compact the current conversation to free up the context window
+- Hold escape to go back to a previous prompt, or type `exit` to leave the CLI.
+
+---
+layout: default
+---
+
 # Modes: Ask
 
 Chat with Copilot about code, concepts, and questions.

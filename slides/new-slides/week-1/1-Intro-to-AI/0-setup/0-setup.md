@@ -121,6 +121,13 @@ code --version
 code .
 ```
 
+Alternatively;
+- Open VS Code
+- Open the command palette on mac by pressing `cmd + shift + p`
+- Type 'shell command' and select `shell command: install 'code' command in PATH`
+- Close your terminal
+- Re-open the terminal inside a directory and type `code .` - vs code should open a new window in this directory
+
 ---
 
 # Quick Validation
